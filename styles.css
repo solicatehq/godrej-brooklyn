@@ -1878,49 +1878,7 @@ input[type="range"]::-moz-range-thumb:hover {
 /* ==========================================================================
    11. Wellness Strip
    ========================================================================== */
-.wellness-strip {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  background-color: var(--color-teal);
-  color: #fff;
-  border-top: var(--border);
-}
 
-.wellness-strip article {
-  padding: clamp(40px, 6vw, 64px);
-  border-right: 1px solid rgba(255, 255, 255, 0.08);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  min-height: 380px;
-}
-
-.wellness-strip article:last-child {
-  border-right: none;
-}
-
-.wellness-strip h2 {
-  font-size: 14px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: var(--color-gold);
-  margin-bottom: 8px;
-}
-
-.wellness-strip h3 {
-  font-size: clamp(22px, 2.5vw, 32px);
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  line-height: 1.2;
-  margin-bottom: 16px;
-}
-
-.wellness-strip p {
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.7);
-  line-height: 1.5;
-}
 
 
 /* ==========================================================================
@@ -2285,20 +2243,7 @@ input[type="range"]::-moz-range-thumb:hover {
   .contact-image {
     display: none;
   }
-  
-  .wellness-strip {
-    grid-template-columns: 1fr;
-  }
-  
-  .wellness-strip article {
-    border-right: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    min-height: 280px;
-  }
-  
-  .wellness-strip article:last-child {
-    border-bottom: none;
-  }
+
 }
 
 @media (max-width: 768px) {
