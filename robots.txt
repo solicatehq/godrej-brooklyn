@@ -2,3 +2,6 @@ User-agent: *
 Allow: /
 
 Sitemap: https://godrejbrooklyn.info/sitemap.xml
+
+# Block internal utility paths
+Disallow: /assets/documents/

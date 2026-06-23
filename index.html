@@ -162,34 +162,64 @@
               "value": true
             }
           ],
+          "brand": {
+            "@id": "https://godrejbrooklyn.info/#developer"
+          },
           "containsPlace": [
             {
               "@type": "Apartment",
               "name": "3 BHK Premium Residence",
+              "description": "Premium 3 BHK flat in Kukatpally with 2 private decks, Vastu compliant layout, cross-ventilation, and separate utility room.",
+              "numberOfRooms": 3,
+              "numberOfBathroomsTotal": 3,
               "floorSize": {
                 "@type": "QuantitativeValue",
                 "minValue": 1810,
                 "maxValue": 1899,
                 "unitCode": "FTK"
-              }
+              },
+              "amenityFeature": [
+                { "@type": "LocationFeatureSpecification", "name": "2 Private Decks", "value": true },
+                { "@type": "LocationFeatureSpecification", "name": "Vastu Compliant", "value": true },
+                { "@type": "LocationFeatureSpecification", "name": "Cross-Ventilated", "value": true },
+                { "@type": "LocationFeatureSpecification", "name": "Separate Utility Room", "value": true }
+              ]
             },
             {
               "@type": "Apartment",
               "name": "3 BHK Luxe Residence",
+              "description": "Luxe 3 BHK residence in Kukatpally with 3 private decks, private entry foyer, corner unit positioning, and wet and dry kitchen layouts.",
+              "numberOfRooms": 3,
+              "numberOfBathroomsTotal": 3,
               "floorSize": {
                 "@type": "QuantitativeValue",
                 "value": 2200,
                 "unitCode": "FTK"
-              }
+              },
+              "amenityFeature": [
+                { "@type": "LocationFeatureSpecification", "name": "3 Private Decks", "value": true },
+                { "@type": "LocationFeatureSpecification", "name": "Private Entry Foyer", "value": true },
+                { "@type": "LocationFeatureSpecification", "name": "Corner Unit", "value": true },
+                { "@type": "LocationFeatureSpecification", "name": "Wet and Dry Kitchen", "value": true }
+              ]
             },
             {
               "@type": "Apartment",
               "name": "4 BHK Luxury Residence",
+              "description": "Ultra-luxury 4 BHK residence in Kukatpally with 4 private decks, double-height lounge, servant room, and walk-in wardrobes.",
+              "numberOfRooms": 4,
+              "numberOfBathroomsTotal": 4,
               "floorSize": {
                 "@type": "QuantitativeValue",
                 "value": 3200,
                 "unitCode": "FTK"
-              }
+              },
+              "amenityFeature": [
+                { "@type": "LocationFeatureSpecification", "name": "4 Private Decks", "value": true },
+                { "@type": "LocationFeatureSpecification", "name": "Double-Height Lounge", "value": true },
+                { "@type": "LocationFeatureSpecification", "name": "Servant Room", "value": true },
+                { "@type": "LocationFeatureSpecification", "name": "Walk-In Wardrobes", "value": true }
+              ]
             }
           ],
           "offers": {
@@ -260,7 +290,8 @@
             ],
             "opens": "10:00",
             "closes": "19:00"
-          }
+          },
+          "sameAs": []
         },
         {
           "@type": "FAQPage",
@@ -353,6 +384,30 @@
                 "@type": "Answer",
                 "text": "The project RERA registration number listed for launch use is P02200010981. Buyers should verify the latest RERA details before booking."
               }
+            },
+            {
+              "@type": "Question",
+              "name": "What is the expected possession date for Godrej Brooklyn Avenue?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "The expected possession timeline should be confirmed with the sales team. Contact +91 95025 42081 or submit the enquiry form for the latest construction and handover schedule."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Is Godrej Brooklyn Avenue near the metro?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes, KPHB Metro Station is approximately 8 minutes from Godrej Brooklyn Avenue Kukatpally, offering direct metro connectivity across Hyderabad."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Which banks offer home loans for Godrej Brooklyn Avenue?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Godrej Properties typically has pre-approved home loan arrangements with leading banks. Request the latest approved bank list and loan offers through the enquiry form or by calling +91 95025 42081."
+              }
             }
           ]
         },
@@ -397,6 +452,17 @@
               "name": "Yashoda Hospital"
             }
           ]
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://godrejbrooklyn.info/#developer",
+          "name": "Godrej Properties",
+          "url": "https://www.godrejproperties.com/",
+          "logo": "https://godrejbrooklyn.info/assets/images/godrej-brooklyn-avenue-logo.png",
+          "sameAs": [
+            "https://www.godrejproperties.com/",
+            "https://en.wikipedia.org/wiki/Godrej_Properties"
+          ]
         }
       ]
     }
@@ -426,7 +492,7 @@
     <!-- Topbar Navigation -->
     <header class="topbar">
       <a class="brand" href="#home" aria-label="Godrej Brooklyn Avenue home">
-        <img class="brand-logo" src="assets/images/godrej-brooklyn-avenue-logo.png" alt="Godrej Brooklyn Avenue Logo">
+        <img class="brand-logo" src="assets/images/godrej-brooklyn-avenue-logo.png" alt="Godrej Brooklyn Avenue Logo" width="765" height="585">
       </a>
       <nav class="nav" aria-label="Primary project navigation">
         <a href="#project-snapshot">Overview</a>
@@ -450,10 +516,10 @@
         <!-- Centered Copy Container -->
         <div class="hero-centered-content">
           <div class="hero-partner-badge-wrap">
-            <img src="assets/images/godrej-authorised-partner.jpg" alt="Godrej Authorised Partner" class="hero-partner-badge">
+            <img src="assets/images/godrej-authorised-partner.jpg" alt="Godrej Authorised Partner" class="hero-partner-badge" width="1024" height="497">
           </div>
           <span class="hero-pretitle">Kukatpally's Crown Jewel</span>
-          <h1 id="hero-title">Live Beautifully <br class="hero-title-br"><span>in Luxury</span></h1>
+          <h1 id="hero-title">Live Beautifully <br class="hero-title-br"><span>in Luxury</span><span class="sr-only"> — Godrej Brooklyn Avenue 3 &amp; 4 BHK Flats in Kukatpally, Hyderabad</span></h1>
           <div class="hero-meta-row">
             <span class="hero-meta-item">Premium 3 &amp; 4 BHK Residences</span>
             <span class="hero-meta-dot"></span>
@@ -646,7 +712,7 @@
           <!-- 3 BHK Premium -->
           <article class="unit-card" data-config="3bhk-premium">
             <div class="unit-image-wrapper">
-              <img src="assets/images/optimized/unit-3bhk-premium-1024.avif" alt="3 BHK Premium interior" loading="lazy" width="480" height="360">
+              <img src="assets/images/optimized/unit-3bhk-premium-1024.avif" alt="Godrej Brooklyn Avenue 3 BHK Premium residence interior Kukatpally" loading="lazy" width="480" height="360">
               <span class="unit-badge">Premium</span>
             </div>
             <div class="unit-info">
@@ -664,7 +730,7 @@
           <!-- 3 BHK Luxe -->
           <article class="unit-card" data-config="3bhk-luxe">
             <div class="unit-image-wrapper">
-              <img src="assets/images/optimized/unit-3bhk-luxe-1024.avif" alt="3 BHK Luxe interior" loading="lazy" width="480" height="360">
+              <img src="assets/images/optimized/unit-3bhk-luxe-1024.avif" alt="Godrej Brooklyn Avenue 3 BHK Luxe residence interior Kukatpally" loading="lazy" width="480" height="360">
               <span class="unit-badge">Luxe</span>
             </div>
             <div class="unit-info">
@@ -682,7 +748,7 @@
           <!-- 4 BHK Luxe -->
           <article class="unit-card" data-config="4bhk-luxe">
             <div class="unit-image-wrapper">
-              <img src="assets/images/optimized/unit-4bhk-luxe-1024.avif" alt="4 BHK Luxe interior" loading="lazy" width="480" height="360">
+              <img src="assets/images/optimized/unit-4bhk-luxe-1024.avif" alt="Godrej Brooklyn Avenue 4 BHK Luxury residence interior Hyderabad" loading="lazy" width="480" height="360">
               <span class="unit-badge">Ultra Luxe</span>
             </div>
             <div class="unit-info">
@@ -1110,6 +1176,18 @@
             <summary>Is Godrej Brooklyn Avenue RERA registered?</summary>
             <p>The project RERA registration number listed for launch use is P02200010981. Buyers should verify the latest RERA details before booking.</p>
           </details>
+          <details class="faq-item">
+            <summary>What is the expected possession date for Godrej Brooklyn Avenue?</summary>
+            <p>The expected possession timeline should be confirmed with the sales team. Contact +91 95025 42081 or submit the enquiry form for the latest construction and handover schedule.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Is Godrej Brooklyn Avenue near the metro?</summary>
+            <p>Yes, KPHB Metro Station is approximately 8 minutes from Godrej Brooklyn Avenue Kukatpally, offering direct metro connectivity across Hyderabad.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Which banks offer home loans for Godrej Brooklyn Avenue?</summary>
+            <p>Godrej Properties typically has pre-approved home loan arrangements with leading banks. Request the latest approved bank list and loan offers through the enquiry form or by calling +91 95025 42081.</p>
+          </details>
         </div>
       </section>
 
@@ -1123,7 +1201,7 @@
             <span class="form-pretitle">Get In Touch</span>
             <h2 id="contact-title">Request a Callback</h2>
             <div class="contact-partner-badge-wrap">
-              <img src="assets/images/godrej-authorised-partner.jpg" alt="Godrej Properties Authorised Partner" class="contact-partner-badge">
+              <img src="assets/images/godrej-authorised-partner.jpg" alt="Godrej Properties Authorised Partner" class="contact-partner-badge" width="1024" height="497">
             </div>
             <label>
               <span>Full Name</span>
@@ -1162,7 +1240,7 @@
       <div class="footer-container">
         <div class="footer-branding-row">
           <div class="footer-badge-wrap">
-            <img src="assets/images/godrej-authorised-partner.jpg" alt="Godrej Properties Authorised Partner" class="footer-partner-badge">
+            <img src="assets/images/godrej-authorised-partner.jpg" alt="Godrej Properties Authorised Partner" class="footer-partner-badge" width="1024" height="497">
           </div>
           <div class="footer-text">
             <nav class="footer-seo-nav" aria-label="Project quick links">
@@ -1188,11 +1266,11 @@
       <div class="modal-card">
         <button class="modal-close" type="button" data-close-modal aria-label="Close enquiry form">×</button>
         <div class="modal-logo" aria-hidden="true">
-          <img class="modal-logo-img" src="assets/images/godrej-brooklyn-avenue-logo.png" alt="Godrej Brooklyn Avenue Logo">
+          <img class="modal-logo-img" src="assets/images/godrej-brooklyn-avenue-logo.png" alt="Godrej Brooklyn Avenue Logo" width="765" height="585">
         </div>
         <h2 id="modal-title">Let us call you back</h2>
         <div class="modal-partner-badge-wrap">
-          <img src="assets/images/godrej-authorised-partner.jpg" alt="Godrej Properties Authorised Partner" class="modal-partner-badge">
+          <img src="assets/images/godrej-authorised-partner.jpg" alt="Godrej Properties Authorised Partner" class="modal-partner-badge" width="1024" height="497">
         </div>
         <form id="modal-form">
           <label>
