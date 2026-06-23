@@ -939,145 +939,7 @@ img {
 .configs-section {
   background-color: var(--bg-card);
 }
-.matrix-scroll-container {
-  max-width: 1200px;
-  margin: 0 auto 56px auto;
-  overflow-x: auto;
-  border-radius: var(--radius-lg);
-  border: var(--border);
-  background-color: var(--bg-color);
-  box-shadow: var(--shadow-md);
-  /* Custom scrollbar for horizontal scrolling on mobile */
-  scrollbar-width: thin;
-  scrollbar-color: var(--color-teal) transparent;
-}
 
-.matrix-scroll-container::-webkit-scrollbar {
-  height: 6px;
-}
-
-.matrix-scroll-container::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.matrix-scroll-container::-webkit-scrollbar-thumb {
-  background-color: rgba(12, 56, 64, 0.2);
-  border-radius: 99px;
-}
-
-.comparison-matrix {
-  display: flex;
-  flex-direction: column;
-  min-width: 800px; /* Keep it structured and avoid squeezing details */
-}
-
-.matrix-row {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr 1fr 1fr;
-  border-bottom: 1px solid rgba(18, 24, 26, 0.08);
-  transition: background-color 0.2s ease;
-}
-
-.matrix-row:hover:not(.matrix-header-row):not(.matrix-actions-row) {
-  background-color: rgba(12, 56, 64, 0.02);
-}
-
-.matrix-row:last-child {
-  border-bottom: none;
-}
-
-.matrix-cell {
-  padding: 20px 24px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  font-size: 14px;
-  color: var(--color-ink);
-  line-height: 1.5;
-  border-right: 1px solid rgba(18, 24, 26, 0.05);
-}
-
-.matrix-cell:last-child {
-  border-right: none;
-}
-
-.matrix-cell.label-cell {
-  font-weight: 700;
-  color: var(--color-teal);
-  text-transform: uppercase;
-  font-size: 12px;
-  letter-spacing: 0.05em;
-  background-color: rgba(12, 56, 64, 0.02);
-}
-
-/* Header Row Custom Styling */
-.matrix-header-row {
-  background-color: var(--color-teal);
-  color: #FFFFFF;
-}
-
-.matrix-header-row .matrix-cell {
-  padding: 24px;
-  color: #FFFFFF;
-  border-right: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.matrix-header-row .label-cell {
-  background-color: rgba(0, 0, 0, 0.15);
-  color: var(--color-gold);
-  font-weight: 800;
-}
-
-.matrix-header-row h4 {
-  font-family: 'Outfit', sans-serif;
-  font-size: 18px;
-  font-weight: 700;
-  margin-bottom: 6px;
-  letter-spacing: 0.02em;
-}
-
-.matrix-badge {
-  display: inline-block;
-  align-self: flex-start;
-  font-size: 10px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  padding: 4px 10px;
-  background-color: rgba(255, 255, 255, 0.15);
-  border-radius: 99px;
-  color: #FFFFFF;
-}
-
-.matrix-badge.gold {
-  background-color: var(--color-gold);
-  color: var(--color-teal);
-}
-
-.matrix-badge.dark {
-  background-color: var(--color-accent);
-  color: #FFFFFF;
-}
-
-/* Actions & Prices cells styling */
-.matrix-row .price-cell {
-  font-family: 'Outfit', sans-serif;
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--color-accent);
-}
-
-.matrix-actions-row {
-  background-color: rgba(18, 24, 26, 0.02);
-}
-
-.matrix-actions-row .matrix-cell {
-  padding: 24px;
-}
-
-.matrix-actions-row .outline-btn {
-  width: 100%;
-}
 
 .unit-grid {
   max-width: 1200px;
@@ -1150,42 +1012,50 @@ img {
   margin-bottom: 18px;
 }
 
-.unit-details {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-bottom: 24px;
+.unit-area {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--color-teal);
+  margin-bottom: 16px;
+  font-family: 'Outfit', sans-serif;
+  letter-spacing: -0.02em;
 }
 
-.detail-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-bottom: 10px;
-  border-bottom: 1px dashed rgba(18, 24, 26, 0.08);
-}
-
-.detail-row:last-child {
-  border-bottom: none;
-}
-
-.detail-row dt {
+.unit-area .unit-sft {
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--color-muted);
   text-transform: uppercase;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.05em;
+  margin-left: 2px;
 }
 
-.detail-row dd {
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--color-ink);
+.unit-features-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 24px;
+  padding: 0;
 }
 
-.detail-row dd.price-value {
-  color: var(--color-accent);
-  font-size: 16px;
+.unit-features-list li {
+  font-size: 14px;
+  font-weight: 550;
+  color: var(--color-muted);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.unit-features-list li::before {
+  content: "";
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  background-color: var(--color-gold);
+  border-radius: 50%;
+  flex-shrink: 0;
 }
 
 .unit-info .outline-btn {
