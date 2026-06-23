@@ -6,11 +6,17 @@
     <title>Godrej Brooklyn Kukatpally, Hyderabad | Premium Residences</title>
     <meta name="description" content="Explore Godrej Brooklyn in Kukatpally, Hyderabad. Kukatpally's Crown Jewel offering Premium 3 & 4 BHK residences. Featuring a 72,000 sq.ft clubhouse, 270 degree views, and 75% open green spaces." />
     
-    <!-- Google Fonts Connection -->
+    <!-- LCP Image Preload: hero background must be discovered immediately -->
+    <link rel="preload" href="assets/images/optimized/brooklyn-rooftop-1024.avif" as="image" type="image/avif" fetchpriority="high">
+
+    <!-- Google Fonts: preconnect early, then swap-load fonts non-blocking -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Outfit:wght@300;400;500;600;700;800&family=Pinyon+Script&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Load fonts asynchronously to avoid render-blocking -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Outfit:wght@700;800;900&family=Pinyon+Script&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Outfit:wght@700;800;900&family=Pinyon+Script&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
     
+    <!-- Critical CSS: load blocking, rest is non-critical -->
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -75,22 +81,22 @@
       </div>
 
       <!-- Intro Editorial Typography Section -->
-      <section class="section intro-rich-section">
+      <section class="section intro-rich-section" style="content-visibility:auto;contain-intrinsic-size:auto 300px">
         <div class="intro-rich-container">
           <p class="intro-rich-text">
             At Godrej Brooklyn, we shape your 
-            <span class="inline-badge-wrap"><img src="assets/images/optimized/inline-arch-1-320.avif" alt="Detail 1"></span> 
+            <span class="inline-badge-wrap"><img src="assets/images/optimized/inline-arch-1-320.avif" alt="Detail 1" width="51" height="32" loading="lazy"></span> 
             vision. We innovate ideas, turning groundbreaking concepts 
-            <span class="inline-badge-wrap"><img src="assets/images/optimized/inline-arch-2-320.avif" alt="Detail 2"></span> 
+            <span class="inline-badge-wrap"><img src="assets/images/optimized/inline-arch-2-320.avif" alt="Detail 2" width="51" height="32" loading="lazy"></span> 
             into lasting structures that endure. Our expertise ensures each project reflects our commitment to excellence, creating uplifting spaces 
-            <span class="inline-badge-wrap"><img src="assets/images/optimized/inline-arch-3-320.avif" alt="Detail 3"></span> 
+            <span class="inline-badge-wrap"><img src="assets/images/optimized/inline-arch-3-320.avif" alt="Detail 3" width="51" height="32" loading="lazy"></span> 
             in the heart of Kukatpally.
           </p>
         </div>
       </section>
 
       <!-- The Master Composition Section (Overhauled) -->
-      <section class="composition-section" id="amenities">
+      <section class="composition-section" id="amenities" style="content-visibility:auto;contain-intrinsic-size:auto 720px">
         <!-- Left: Editorial Text -->
         <div class="comp-col-left">
           <div class="comp-sticky-content">
@@ -103,7 +109,7 @@
         <!-- Center: Vertical Image Banner -->
         <div class="comp-col-center">
           <div class="comp-image-wrap">
-            <img src="assets/images/optimized/brooklyn-hero-1024.avif" alt="Godrej Brooklyn Kukatpally layout composition">
+            <img src="assets/images/optimized/brooklyn-hero-1024.avif" alt="Godrej Brooklyn Kukatpally layout composition" width="560" height="720" loading="lazy">
           </div>
         </div>
         
@@ -236,7 +242,7 @@
           <!-- 3 BHK Premium -->
           <article class="unit-card" data-config="3bhk-premium">
             <div class="unit-image-wrapper">
-              <img src="assets/images/optimized/unit-3bhk-premium-1024.avif" alt="3 BHK Premium interior" loading="lazy">
+              <img src="assets/images/optimized/unit-3bhk-premium-1024.avif" alt="3 BHK Premium interior" loading="lazy" width="480" height="360">
               <span class="unit-badge">Premium</span>
             </div>
             <div class="unit-info">
@@ -254,7 +260,7 @@
           <!-- 3 BHK Luxe -->
           <article class="unit-card" data-config="3bhk-luxe">
             <div class="unit-image-wrapper">
-              <img src="assets/images/optimized/unit-3bhk-luxe-1024.avif" alt="3 BHK Luxe interior" loading="lazy">
+              <img src="assets/images/optimized/unit-3bhk-luxe-1024.avif" alt="3 BHK Luxe interior" loading="lazy" width="480" height="360">
               <span class="unit-badge">Luxe</span>
             </div>
             <div class="unit-info">
@@ -272,7 +278,7 @@
           <!-- 4 BHK Luxe -->
           <article class="unit-card" data-config="4bhk-luxe">
             <div class="unit-image-wrapper">
-              <img src="assets/images/optimized/unit-4bhk-luxe-1024.avif" alt="4 BHK Luxe interior" loading="lazy">
+              <img src="assets/images/optimized/unit-4bhk-luxe-1024.avif" alt="4 BHK Luxe interior" loading="lazy" width="480" height="360">
               <span class="unit-badge">Ultra Luxe</span>
             </div>
             <div class="unit-info">
@@ -321,7 +327,7 @@
       </section>
 
       <!-- Floor Plans Section -->
-      <section class="section floor-section" id="floor-plans" aria-labelledby="floor-title">
+      <section class="section floor-section" id="floor-plans" aria-labelledby="floor-title" style="content-visibility:auto;contain-intrinsic-size:auto 600px">
         <div class="section-heading">
           <span class="section-pretitle">Space Layouts</span>
           <h2 id="floor-title">Floor Plans</h2>
@@ -357,7 +363,7 @@
       </section>
 
       <!-- EMI Calculator Section -->
-      <section class="section emi-section" aria-labelledby="emi-title">
+      <section class="section emi-section" aria-labelledby="emi-title" style="content-visibility:auto;contain-intrinsic-size:auto 500px">
         <div class="section-heading">
           <span class="section-pretitle">Financial Planning</span>
           <h2 id="emi-title">Calculate Your EMI</h2>
@@ -411,7 +417,7 @@
       </section>
 
       <!-- Luxury Gallery Tiles -->
-      <section class="gallery-section" aria-label="Luxury interiors and landscape gallery">
+      <section class="gallery-section" aria-label="Luxury interiors and landscape gallery" style="content-visibility:auto;contain-intrinsic-size:auto 500px">
         <div class="gallery-grid">
           <div class="gallery-tile tile-large">
             <div class="tile-overlay"></div>
@@ -437,7 +443,7 @@
       </section>
 
       <!-- Location Section -->
-      <section class="section location-section" id="location" aria-labelledby="location-title">
+      <section class="section location-section" id="location" aria-labelledby="location-title" style="content-visibility:auto;contain-intrinsic-size:auto 650px">
         <div class="location-title">
           <span class="section-pretitle">Neighborhood &amp; Transit</span>
           <h2 id="location-title">Effortlessly Connected, Quietly Yours</h2>
@@ -534,7 +540,7 @@
       </section>
 
       <!-- Why Kukatpally Section -->
-      <section class="section why-section" id="why-kukatpally">
+      <section class="section why-section" id="why-kukatpally" style="content-visibility:auto;contain-intrinsic-size:auto 700px">
         <div class="section-heading">
           <span class="section-pretitle">The Kukatpally Advantage</span>
           <h2>Why Kukatpally?</h2>
@@ -585,7 +591,7 @@
       </section>
 
       <!-- Lifestyle Statements Wellness Strip -->
-      <section class="wellness-strip" aria-label="Lifestyle wellness statements">
+      <section class="wellness-strip" aria-label="Lifestyle wellness statements" style="content-visibility:auto;contain-intrinsic-size:auto 400px">
         <article>
           <h2>Live Beautifully</h2>
           <h3>In Body, Mind and Spirit</h3>
@@ -604,7 +610,7 @@
       </section>
 
       <!-- Contact Callback Section -->
-      <section class="contact-section" id="contact" aria-labelledby="contact-title">
+      <section class="contact-section" id="contact" aria-labelledby="contact-title" style="content-visibility:auto;contain-intrinsic-size:auto 650px">
         <div class="contact-image" aria-hidden="true"></div>
         <div class="contact-form-wrap">
           <form class="contact-form" id="contact-form">
@@ -677,6 +683,6 @@
       </div>
     </dialog>
 
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
   </body>
 </html>

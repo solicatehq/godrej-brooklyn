@@ -2099,6 +2099,8 @@ input[type="range"]::-moz-range-thumb:hover {
   opacity: 0;
   transform: scale(0.95);
   transition: opacity 0.3s ease, transform 0.3s ease;
+  /* Scope rendering to this component, prevents page-wide reflows */
+  contain: layout style paint;
 }
 
 /* Backdrop blur using standards */
@@ -2564,4 +2566,26 @@ input[type="range"]::-moz-range-thumb:hover {
   .why-grid {
     grid-template-columns: 1fr;
   }
+}
+
+/* ==========================================================================
+   Performance: Accessibility & Motion Preferences
+   ========================================================================== */
+
+/* Respect user motion preferences — also improves INP by removing long animations */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Composited animation hint only on hover — avoids VRAM waste globally */
+.comp-image-wrap img:hover,
+.unit-image-wrapper img:hover {
+  will-change: transform;
 }

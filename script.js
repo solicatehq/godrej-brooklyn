@@ -1,4 +1,16 @@
 // ==========================================================================
+// 0. Performance Utilities
+// ==========================================================================
+
+// Polyfill for yielding to main thread (INP improvement)
+async function yieldToMain() {
+  if ('scheduler' in window && 'yield' in scheduler) {
+    return await scheduler.yield();
+  }
+  return new Promise(resolve => setTimeout(resolve, 0));
+}
+
+// ==========================================================================
 // 1. DOM Elements Selection
 // ==========================================================================
 const topbar = document.querySelector(".topbar");
@@ -8,16 +20,23 @@ const closeTargets = document.querySelectorAll("[data-close-modal]");
 const modalForm = document.getElementById("modal-form");
 const contactForm = document.getElementById("contact-form");
 
-// Toggle header scrolled styling
+// Toggle header scrolled styling with rAF throttle (keeps main thread free)
 if (topbar) {
+  let ticking = false;
   const checkScroll = () => {
     if (window.scrollY > 50) {
       topbar.classList.add("scrolled");
     } else {
       topbar.classList.remove("scrolled");
     }
+    ticking = false;
   };
-  window.addEventListener("scroll", checkScroll);
+  window.addEventListener("scroll", () => {
+    if (!ticking) {
+      requestAnimationFrame(checkScroll);
+      ticking = true;
+    }
+  }, { passive: true });
   checkScroll(); // trigger check on load
 }
 
