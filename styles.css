@@ -1512,11 +1512,47 @@ input[type="range"]::-moz-range-thumb:hover {
   color: var(--color-gold);
 }
 
-.tile-large { grid-row: span 2; background-position: 30% 72%; }
-.tile-warm { background-position: 54% 42%; }
-.tile-calm { background-position: 78% 62%; }
-.tile-dining { background-position: 44% 85%; }
-.tile-library { background-position: 65% 28%; }
+.tile-large { 
+  grid-row: span 2; 
+  background-image: url("assets/images/optimized/clubhouse-lounge.webp");
+  background-image: image-set(
+    url("assets/images/optimized/clubhouse-lounge.avif") type("image/avif"),
+    url("assets/images/optimized/clubhouse-lounge.webp") type("image/webp")
+  );
+  background-position: center;
+}
+.tile-warm { 
+  background-image: url("assets/images/optimized/arrival-court.webp");
+  background-image: image-set(
+    url("assets/images/optimized/arrival-court.avif") type("image/avif"),
+    url("assets/images/optimized/arrival-court.webp") type("image/webp")
+  );
+  background-position: center;
+}
+.tile-calm { 
+  background-image: url("assets/images/optimized/wellness-deck.webp");
+  background-image: image-set(
+    url("assets/images/optimized/wellness-deck.avif") type("image/avif"),
+    url("assets/images/optimized/wellness-deck.webp") type("image/webp")
+  );
+  background-position: center;
+}
+.tile-dining { 
+  background-image: url("assets/images/optimized/private-dining.webp");
+  background-image: image-set(
+    url("assets/images/optimized/private-dining.avif") type("image/avif"),
+    url("assets/images/optimized/private-dining.webp") type("image/webp")
+  );
+  background-position: center;
+}
+.tile-library { 
+  background-image: url("assets/images/optimized/reading-room.webp");
+  background-image: image-set(
+    url("assets/images/optimized/reading-room.avif") type("image/avif"),
+    url("assets/images/optimized/reading-room.webp") type("image/webp")
+  );
+  background-position: center;
+}
 
 
 /* ==========================================================================

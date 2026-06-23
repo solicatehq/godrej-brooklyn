@@ -186,7 +186,7 @@ if (loanAmountInput && interestRateInput && loanTenureInput) {
   [loanAmountInput, interestRateInput, loanTenureInput].forEach((input) => {
     input.addEventListener("input", calculateEMI);
   });
-  
+
   // Calculate on initialization
   calculateEMI();
 }
@@ -201,34 +201,95 @@ if (emiForm) {
 
 
 // ==========================================================================
-// 7. Lead Forms Submission Handling
+// 7. Lead Forms → Google Sheets Submission
 // ==========================================================================
-function handleLeadFormSubmit(form) {
+// Client's Google Form → Client's Sheet
+const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSe4a_-PkEjH85YRnobx7Px-dUswF3n5q0s7w85xuLmRFJHPSg/formResponse";
+
+// Backup Google Form → Personal Sheet (fires alongside client form)
+const BACKUP_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSc8aYBve0UfTeoqUzdk6uWmwpp4IBbiP_UWw1b1IPcs2PC-nw/formResponse";
+
+function handleLeadFormSubmit(form, source) {
   const note = form.querySelector(".form-note");
-  form.reset();
-  if (note) {
-    note.textContent = "Thank you! Our sales team will connect with you shortly.";
-    // Clear message after 4 seconds
-    setTimeout(() => {
-      note.textContent = "";
-    }, 4000);
+  const submitBtn = form.querySelector('button[type="submit"], .primary-cta');
+  const originalText = submitBtn ? submitBtn.textContent : "";
+
+  const formData = new FormData(form);
+
+  // Client form payload
+  const clientPayload = new URLSearchParams({
+    "entry.1442804760": formData.get("name") || "",
+    "entry.417772230":  formData.get("phone") || "",
+    "entry.2037957469": formData.get("email") || "",
+    "entry.300270238":  formData.get("message") || "",
+    "entry.256531383":  source
+  });
+
+  // Backup form payload
+  const backupPayload = new URLSearchParams({
+    "entry.983784100":  formData.get("name") || "",
+    "entry.143321218":  formData.get("phone") || "",
+    "entry.497757624":  formData.get("email") || "",
+    "entry.1750126660": formData.get("message") || "",
+    "entry.616551594":  source
+  });
+
+  const fetchOptions = (payload) => ({
+    method: "POST",
+    mode: "no-cors",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: payload.toString()
+  });
+
+  // Disable button + show loading state
+  if (submitBtn) {
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Submitting…";
   }
+
+  // Fire both simultaneously
+  Promise.all([
+    fetch(GOOGLE_FORM_URL, fetchOptions(clientPayload)),
+    fetch(BACKUP_FORM_URL, fetchOptions(backupPayload))
+  ])
+  .then(() => {
+    form.reset();
+    if (note) {
+      note.textContent = "Thank you! Our sales team will connect with you shortly.";
+      note.style.color = "#2e7d32";
+    }
+  })
+  .catch(() => {
+    if (note) {
+      note.textContent = "Something went wrong. Please call us directly.";
+      note.style.color = "#c62828";
+    }
+  })
+  .finally(() => {
+    if (submitBtn) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalText;
+    }
+    setTimeout(() => {
+      if (note) { note.textContent = ""; note.style.color = ""; }
+    }, 5000);
+  });
 }
 
 if (contactForm) {
   contactForm.addEventListener("submit", (event) => {
     event.preventDefault();
-    handleLeadFormSubmit(contactForm);
+    handleLeadFormSubmit(contactForm, "contact");
   });
 }
 
 if (modalForm) {
   modalForm.addEventListener("submit", (event) => {
     event.preventDefault();
-    handleLeadFormSubmit(modalForm);
-    // Close modal after brief success presentation
+    handleLeadFormSubmit(modalForm, "modal");
+    // Close modal after brief success delay
     setTimeout(() => {
       closeModal();
-    }, 1500);
+    }, 2000);
   });
 }
