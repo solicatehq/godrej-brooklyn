@@ -2,6 +2,36 @@
 // 0. Performance Utilities
 // ==========================================================================
 
+window.dataLayer = window.dataLayer || [];
+
+function trackEvent(eventName, payload = {}) {
+  window.dataLayer.push({
+    event: eventName,
+    ...payload
+  });
+}
+
+function trackLeadSourceClick(source) {
+  if (!source) return;
+
+  if (source === "brochure_tab") {
+    trackEvent("brochure_click", { source });
+  } else if (source.startsWith("price_breakup")) {
+    trackEvent("price_breakup_click", { source });
+  } else if (source.startsWith("floorplan")) {
+    trackEvent("floor_plan_click", { source });
+  } else if (source === "emi_loan_offers") {
+    trackEvent("emi_calculate", {
+      source,
+      loan_amount: loanAmountInput ? loanAmountInput.value : "",
+      interest_rate: interestRateInput ? interestRateInput.value : "",
+      loan_tenure: loanTenureInput ? loanTenureInput.value : ""
+    });
+  } else if (source === "project_walkthrough_video") {
+    trackEvent("video_request_click", { source });
+  }
+}
+
 // Polyfill for yielding to main thread (INP improvement)
 async function yieldToMain() {
   if ('scheduler' in window && 'yield' in scheduler) {
@@ -19,6 +49,8 @@ const openButtons = document.querySelectorAll(".open-popup");
 const closeTargets = document.querySelectorAll("[data-close-modal]");
 const modalForm = document.getElementById("modal-form");
 const contactForm = document.getElementById("contact-form");
+const phoneLinks = document.querySelectorAll('a[href^="tel:"]');
+const whatsappLinks = document.querySelectorAll('a[href*="wa.me"]');
 
 // Header scrolled styling logic removed since topbar is now absolute and scrolls with page.
 
@@ -44,7 +76,13 @@ const emiOutput = document.getElementById("emi-output");
 // ==========================================================================
 // 2. Native <dialog> Modal Controllers & Fallbacks
 // ==========================================================================
-function openModal() {
+let activeModalSource = null;
+
+function openModal(source = "modal") {
+  activeModalSource = source;
+  trackLeadSourceClick(source);
+  trackEvent("lead_form_open", { source });
+
   if (modal && typeof modal.showModal === "function") {
     modal.showModal();
     // Auto-focus first input
@@ -61,7 +99,21 @@ function closeModal() {
 
 // Bind show/hide listeners
 openButtons.forEach((button) => {
-  button.addEventListener("click", openModal);
+  button.addEventListener("click", () => {
+    openModal(button.dataset.leadSource || "modal");
+  });
+});
+
+phoneLinks.forEach((link) => {
+  link.addEventListener("click", () => {
+    trackEvent("phone_click", { target: link.getAttribute("href") });
+  });
+});
+
+whatsappLinks.forEach((link) => {
+  link.addEventListener("click", () => {
+    trackEvent("whatsapp_click", { target: link.getAttribute("href") });
+  });
 });
 
 closeTargets.forEach((target) => {
@@ -137,7 +189,7 @@ planOverlays.forEach((overlay) => {
       modalTitle.textContent = planNameText;
     }
 
-    openModal();
+    openModal(activeFloorPlanSource);
   });
 });
 
@@ -145,6 +197,7 @@ planOverlays.forEach((overlay) => {
 if (modal) {
   modal.addEventListener("close", () => {
     activeFloorPlanSource = null;
+    activeModalSource = null;
     const modalTitle = document.getElementById("modal-title");
     if (modalTitle) {
       modalTitle.textContent = "Let us call you back";
@@ -251,13 +304,31 @@ function handleLeadFormSubmit(form, source) {
   const originalText = submitBtn ? submitBtn.textContent : "";
 
   const formData = new FormData(form);
+  const pageUrl = window.location.href;
+  const referrer = document.referrer || "direct";
+  const searchParams = new URLSearchParams(window.location.search);
+  const utmSource = searchParams.get("utm_source") || "";
+  const utmMedium = searchParams.get("utm_medium") || "";
+  const utmCampaign = searchParams.get("utm_campaign") || "";
+  const requestedAsset = source || "contact";
+  const rawMessage = formData.get("message") || "";
+  const enrichedMessage = [
+    rawMessage,
+    "",
+    `Requested asset/source: ${requestedAsset}`,
+    `Page URL: ${pageUrl}`,
+    `Referrer: ${referrer}`,
+    `UTM source: ${utmSource}`,
+    `UTM medium: ${utmMedium}`,
+    `UTM campaign: ${utmCampaign}`
+  ].join("\n").trim();
 
   // Client form payload
   const clientPayload = new URLSearchParams({
     "entry.1442804760": formData.get("name") || "",
     "entry.417772230":  formData.get("phone") || "",
     "entry.2037957469": formData.get("email") || "",
-    "entry.300270238":  formData.get("message") || "",
+    "entry.300270238":  enrichedMessage,
     "entry.256531383":  source
   });
 
@@ -266,7 +337,7 @@ function handleLeadFormSubmit(form, source) {
     "entry.983784100":  formData.get("name") || "",
     "entry.143321218":  formData.get("phone") || "",
     "entry.497757624":  formData.get("email") || "",
-    "entry.1750126660": formData.get("message") || "",
+    "entry.1750126660": enrichedMessage,
     "entry.616551594":  source
   });
 
@@ -289,6 +360,14 @@ function handleLeadFormSubmit(form, source) {
     fetch(BACKUP_FORM_URL, fetchOptions(backupPayload))
   ])
   .then(() => {
+    trackEvent("lead_form_submit", {
+      source,
+      page_url: pageUrl,
+      referrer,
+      utm_source: utmSource,
+      utm_medium: utmMedium,
+      utm_campaign: utmCampaign
+    });
     form.reset();
     if (note) {
       note.textContent = "Thank you! Our sales team will connect with you shortly.";
@@ -322,7 +401,7 @@ if (contactForm) {
 if (modalForm) {
   modalForm.addEventListener("submit", (event) => {
     event.preventDefault();
-    const leadSource = activeFloorPlanSource || "modal";
+    const leadSource = activeFloorPlanSource || activeModalSource || "modal";
     handleLeadFormSubmit(modalForm, leadSource);
     // Close modal after brief success delay
     setTimeout(() => {

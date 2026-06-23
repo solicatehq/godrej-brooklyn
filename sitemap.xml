@@ -1,10 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://godrejbrooklyn.info/</loc>
     <lastmod>2026-06-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://godrejbrooklyn.info/og-image.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://godrejbrooklyn.info/assets/images/optimized/brooklyn-rooftop-1024.avif</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://godrejbrooklyn.info/assets/images/optimized/brooklyn-hero-1024.avif</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://godrejbrooklyn.info/assets/images/optimized/unit-3bhk-premium-1024.avif</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://godrejbrooklyn.info/assets/images/optimized/unit-3bhk-luxe-1024.avif</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://godrejbrooklyn.info/assets/images/optimized/unit-4bhk-luxe-1024.avif</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://godrejbrooklyn.info/assets/images/optimized/clubhouse-lounge.avif</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://godrejbrooklyn.info/assets/images/optimized/arrival-court.avif</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://godrejbrooklyn.info/assets/images/optimized/wellness-deck.avif</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://godrejbrooklyn.info/assets/images/optimized/private-dining.avif</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://godrejbrooklyn.info/assets/images/optimized/reading-room.avif</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://godrejbrooklyn.info/privacy-policy.html</loc>

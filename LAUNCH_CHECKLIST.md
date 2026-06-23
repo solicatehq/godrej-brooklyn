@@ -73,18 +73,28 @@ Current missing launch files:
 
 - `thank-you.html` if needed
 
-Current missing SEO/analytics items:
+Current SEO items implemented:
 
 - canonical URL
 - Open Graph metadata
 - Twitter/X card metadata
-- JSON-LD schema
-- FAQ section and FAQ schema
+- JSON-LD schema for `WebSite`, `WebPage`, `ApartmentComplex`, `RealEstateAgent`/`LocalBusiness`, and `FAQPage`
+- visible FAQ section matching FAQ schema
+- image sitemap extension inside `sitemap.xml`
+- crawlable hero and gallery image tags
+- project snapshot and Kukatpally micro-market guide sections
+- `llms.txt` answer-engine context file
+- robots rules
+
+Current missing external SEO/analytics items:
+
 - Google Tag Manager snippet
 - GA4 setup
 - Google Search Console verification
-- sitemap submission
-- robots rules
+- sitemap submission after production deployment
+- live Rich Results Test after deployment
+- live PageSpeed Insights/Lighthouse after deployment
+- video SEO metadata after final video URL and thumbnail are available
 
 Current missing lead system items:
 
@@ -104,9 +114,9 @@ Current risk items in code:
 - Footer says `RERA Registered` but no RERA number is shown. Do not launch like this.
 - Footer says mockup. Replace before final launch.
 - Some factual claims need source confirmation: `400+ Families Registered Interest`, `58+ amenities`, `7.7 Acre Master Plan`, prices, travel times, bank approvals.
-- Hero image is loaded as a CSS background. This can hurt LCP unless preloaded and optimized.
+- Hero image is now present as a crawlable `<img>` with preload/fetch priority while the CSS background remains as fallback.
 - Images are PNG and too heavy for a fast mobile landing page.
-- Form currently only resets and shows a message. It does not send leads anywhere.
+- Forms submit to the configured Google Form endpoints and enrich the message field with source, page URL, referrer, and UTM context.
 - The reCAPTCHA box is only visual. It does not protect the form.
 
 ---
@@ -172,24 +182,24 @@ Do not add unnecessary framework files.
 
 Inside `index.html`, add or verify:
 
-- [ ] One `<h1>` only.
-- [ ] H1 includes `Godrej Brooklyn Avenue` and location.
-- [ ] Title tag uses venture name, location, and property type.
-- [ ] Meta description is under 160 characters and has buyer intent.
-- [ ] Canonical tag uses final HTTPS domain.
-- [ ] Robots meta tag allows indexing.
-- [ ] Open Graph title, description, image, URL, and type.
-- [ ] Twitter/X card tags.
-- [ ] Favicon links.
-- [ ] Theme color.
-- [ ] Preload for critical hero image.
-- [ ] Defer script loading.
-- [ ] All important content is present in HTML, not injected only by JS.
-- [ ] All image tags have useful alt text.
+- [x] One `<h1>` only.
+- [ ] H1 includes `Godrej Brooklyn Avenue` and location. Visible hero H1 restored to `Live Beautifully in Luxury` by design preference.
+- [x] Title tag uses venture name, location, and property type.
+- [x] Meta description is under 160 characters and has buyer intent.
+- [x] Canonical tag uses final HTTPS domain.
+- [x] Robots meta tag allows indexing.
+- [x] Open Graph title, description, image, URL, and type.
+- [x] Twitter/X card tags.
+- [x] Favicon links.
+- [x] Theme color.
+- [x] Preload for critical hero image.
+- [x] Defer script loading.
+- [x] All important content is present in HTML, not injected only by JS.
+- [x] All image tags have useful alt text.
 - [ ] Every image has width and height, or CSS aspect-ratio.
-- [ ] Footer has real RERA and disclaimer details.
-- [ ] FAQ section is visible on page.
-- [ ] No fake reviews or fake rating schema.
+- [x] Footer has real RERA and disclaimer details.
+- [x] FAQ section is visible on page.
+- [x] No fake reviews or fake rating schema.
 
 Suggested title:
 
@@ -205,17 +215,17 @@ Suggested meta description:
 
 Add natural location content for:
 
-- [ ] Kukatpally
-- [ ] KPHB
-- [ ] Hyderabad
-- [ ] Telangana
-- [ ] JNTU Hyderabad
-- [ ] Hitech City
-- [ ] KPHB Metro
-- [ ] nearby schools
-- [ ] nearby hospitals
-- [ ] nearby shopping and lifestyle places
-- [ ] nearby IT and business hubs
+- [x] Kukatpally
+- [x] KPHB
+- [x] Hyderabad
+- [x] Telangana
+- [x] JNTU Hyderabad
+- [x] Hitech City
+- [x] KPHB Metro
+- [x] nearby schools
+- [x] nearby hospitals
+- [x] nearby shopping and lifestyle places
+- [x] nearby IT and business hubs
 
 Do not keyword stuff.
 
@@ -250,18 +260,18 @@ AEO means answer engine optimization.
 
 The site should clearly answer:
 
-- [ ] What is Godrej Brooklyn Avenue?
-- [ ] Where is it located?
-- [ ] What configurations are available?
-- [ ] What is the starting price, if approved?
-- [ ] How can a buyer get the brochure?
-- [ ] How can a buyer get the floor plan?
-- [ ] Is it RERA registered?
-- [ ] Who is handling enquiries?
-- [ ] How can a buyer schedule a callback or site visit?
-- [ ] What nearby landmarks matter?
+- [x] What is Godrej Brooklyn Avenue?
+- [x] Where is it located?
+- [x] What configurations are available?
+- [x] What is the starting price, if approved?
+- [x] How can a buyer get the brochure?
+- [x] How can a buyer get the floor plan?
+- [x] Is it RERA registered?
+- [x] Who is handling enquiries?
+- [x] How can a buyer schedule a callback or site visit?
+- [x] What nearby landmarks matter?
 
-Add a real FAQ section with at least 8 questions.
+Current FAQ section has 11 visible questions.
 
 Use FAQ schema only for FAQs that are visible on the page.
 
@@ -277,11 +287,12 @@ Use only accurate schema.
 
 Recommended schema:
 
-- [ ] `WebSite`
-- [ ] `BreadcrumbList`
-- [ ] `FAQPage`
-- [ ] `RealEstateAgent` or `LocalBusiness` for the agent/company
-- [ ] `Residence` or `ApartmentComplex` only if accurate
+- [x] `WebSite`
+- [x] `BreadcrumbList`
+- [x] `FAQPage`
+- [x] `ItemList` for nearby landmarks
+- [x] `RealEstateAgent` or `LocalBusiness` for the agent/company
+- [x] `Residence` or `ApartmentComplex` only if accurate
 
 Do not add:
 
@@ -365,8 +376,8 @@ Cloudflare Stream plan:
 
 If no real video is available:
 
-- [ ] Keep the video section as image/poster only.
-- [ ] Do not show a play button that does nothing.
+- [x] Keep the video section as image/poster only.
+- [x] Do not show a play button that does nothing.
 
 ---
 
@@ -393,27 +404,27 @@ Google Sheet setup:
   - Device
   - Status
   - Notes
-- [ ] Create Google Apps Script endpoint or approved form backend.
-- [ ] Connect both modal form and contact form.
-- [ ] Add success and failure states.
+- [x] Create Google Apps Script endpoint or approved form backend.
+- [x] Connect both modal form and contact form.
+- [x] Add success and failure states.
 - [ ] Add spam protection.
 - [ ] Add consent line near forms.
 
 Form behavior:
 
-- [ ] Name required.
-- [ ] Indian mobile number required.
-- [ ] Email optional but validated if entered.
-- [ ] Message optional.
-- [ ] Hidden field captures CTA source.
-- [ ] Hidden field captures requested asset.
-- [ ] Hidden fields capture UTM data.
-- [ ] Lead submit pushes GTM `lead_form_submit`.
-- [ ] Brochure/floor/price buttons pass the requested asset.
+- [x] Name required.
+- [x] Indian mobile number required.
+- [x] Email optional but validated if entered.
+- [x] Message optional.
+- [x] CTA source captured in lead payload.
+- [x] Requested asset captured in lead payload.
+- [x] UTM context captured in enriched lead message.
+- [x] Lead submit pushes dataLayer `lead_form_submit`.
+- [x] Brochure/floor/price buttons pass the requested asset.
 
 Current issue:
 
-`script.js` currently resets forms and shows a message. It does not send leads anywhere.
+`script.js` submits to the configured Google Form endpoints. Test one live lead after deployment to confirm both destination sheets receive the enriched tracking context.
 
 ---
 
@@ -544,15 +555,16 @@ Setup:
 
 Track events:
 
-- [ ] `phone_click`
-- [ ] `whatsapp_click`
-- [ ] `lead_form_open`
-- [ ] `lead_form_submit`
-- [ ] `brochure_click`
-- [ ] `floor_plan_click`
-- [ ] `price_breakup_click`
-- [ ] `emi_calculate`
+- [x] `phone_click`
+- [x] `whatsapp_click`
+- [x] `lead_form_open`
+- [x] `lead_form_submit`
+- [x] `brochure_click`
+- [x] `floor_plan_click`
+- [x] `price_breakup_click`
+- [x] `emi_calculate`
 - [ ] `video_play`
+- [x] `video_request_click` until final video asset exists
 
 Mark conversions:
 
