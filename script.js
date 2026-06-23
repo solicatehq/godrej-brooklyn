@@ -101,6 +101,9 @@ if (modal) {
 // ==========================================================================================
 // 4. Interactive Floor & Master Plans Toggle
 // ==========================================================================
+// Variable to store which plan triggered the modal form
+let activeFloorPlanSource = null;
+
 planButtons.forEach((button) => {
   button.addEventListener("click", () => {
     const selectedPlan = button.dataset.plan;
@@ -108,13 +111,46 @@ planButtons.forEach((button) => {
     planButtons.forEach((item) => item.classList.toggle("active", item === button));
     planPanels.forEach((panel) => panel.classList.remove("active"));
 
-    const panelClass = selectedPlan === "master" ? ".master-plan" : ".floor-plan";
+    const panelClass = selectedPlan === "master" ? ".master-plan" : `.${selectedPlan}`;
     const activePanel = document.querySelector(panelClass);
     if (activePanel) {
       activePanel.classList.add("active");
     }
   });
 });
+
+// Click listener for lock overlays on plan panels to trigger callback modal
+const planOverlays = document.querySelectorAll(".plan-unlock-overlay");
+planOverlays.forEach((overlay) => {
+  overlay.addEventListener("click", () => {
+    const panel = overlay.closest(".plan-panel");
+    if (!panel) return;
+
+    // Retrieve active plan metadata
+    activeFloorPlanSource = panel.dataset.planSource || "floorplan";
+    const unlockTextEl = overlay.querySelector(".unlock-text");
+    const planNameText = unlockTextEl ? unlockTextEl.textContent : "Plan";
+
+    // Set modal title dynamically
+    const modalTitle = document.getElementById("modal-title");
+    if (modalTitle) {
+      modalTitle.textContent = planNameText;
+    }
+
+    openModal();
+  });
+});
+
+// Auto-reset plan metadata when dialog is closed
+if (modal) {
+  modal.addEventListener("close", () => {
+    activeFloorPlanSource = null;
+    const modalTitle = document.getElementById("modal-title");
+    if (modalTitle) {
+      modalTitle.textContent = "Let us call you back";
+    }
+  });
+}
 
 
 // ==========================================================================
@@ -286,7 +322,8 @@ if (contactForm) {
 if (modalForm) {
   modalForm.addEventListener("submit", (event) => {
     event.preventDefault();
-    handleLeadFormSubmit(modalForm, "modal");
+    const leadSource = activeFloorPlanSource || "modal";
+    handleLeadFormSubmit(modalForm, leadSource);
     // Close modal after brief success delay
     setTimeout(() => {
       closeModal();
