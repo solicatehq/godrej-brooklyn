@@ -170,7 +170,7 @@ img {
    1. Header (Topbar) Styles
    ========================================================================== */
 .topbar {
-  position: fixed;
+  position: absolute;
   width: 100%;
   top: 0;
   left: 0;
@@ -288,46 +288,7 @@ img {
   height: 14px;
 }
 
-/* Scrolled Header State */
-.topbar.scrolled {
-  padding: 16px clamp(16px, 4vw, 80px);
-  background-color: rgba(250, 249, 245, 0.92);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: var(--border-light);
-  box-shadow: var(--shadow-sm);
-  color: var(--color-ink);
-}
 
-.topbar.scrolled .brand-name {
-  color: var(--color-teal);
-}
-
-.topbar.scrolled .nav a {
-  color: var(--color-muted);
-}
-
-.topbar.scrolled .nav a:hover {
-  color: var(--color-teal);
-}
-
-.topbar.scrolled .lang-switch {
-  color: var(--color-muted);
-}
-
-.topbar.scrolled .phone-pill {
-  background-color: var(--color-teal);
-  border-color: var(--color-teal);
-  color: var(--bg-color);
-  box-shadow: 0 4px 12px rgba(12, 56, 64, 0.12);
-}
-
-.topbar.scrolled .phone-pill:hover {
-  background-color: var(--color-accent);
-  border-color: var(--color-accent);
-  color: #FFFFFF;
-  box-shadow: 0 6px 16px rgba(188, 75, 49, 0.2);
-}
 
 /* ==========================================================================
    2. Hero Section (Centered Full-Bleed)
@@ -2344,10 +2305,7 @@ input[type="range"]::-moz-range-thumb:hover {
   .topbar {
     padding: 14px 20px;
   }
-  
-  .topbar.scrolled {
-    padding: 12px 20px;
-  }
+
   
   .nav {
     display: none; /* Hide default nav for mobile (can toggle or scroll-menu) */

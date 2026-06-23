@@ -20,25 +20,7 @@ const closeTargets = document.querySelectorAll("[data-close-modal]");
 const modalForm = document.getElementById("modal-form");
 const contactForm = document.getElementById("contact-form");
 
-// Toggle header scrolled styling with rAF throttle (keeps main thread free)
-if (topbar) {
-  let ticking = false;
-  const checkScroll = () => {
-    if (window.scrollY > 50) {
-      topbar.classList.add("scrolled");
-    } else {
-      topbar.classList.remove("scrolled");
-    }
-    ticking = false;
-  };
-  window.addEventListener("scroll", () => {
-    if (!ticking) {
-      requestAnimationFrame(checkScroll);
-      ticking = true;
-    }
-  }, { passive: true });
-  checkScroll(); // trigger check on load
-}
+// Header scrolled styling logic removed since topbar is now absolute and scrolls with page.
 
 // Floor plan elements
 const planButtons = document.querySelectorAll("[data-plan]");
