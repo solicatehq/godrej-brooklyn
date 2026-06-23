@@ -52,25 +52,26 @@ Current files found:
 - `index.html`
 - `styles.css`
 - `script.js`
-- `assets/images/*.png`
-
-Current image weight:
-
-- Full project folder: includes current generated assets and brochure-derived source pages.
-- `generated-hero.png`: about 2.6 MB.
-- Most other PNGs: about 700 KB to 1 MB each.
-
-Current missing launch files:
-
+- `privacy-policy.html`
 - `robots.txt`
 - `sitemap.xml`
 - `site.webmanifest`
-- `favicon.ico` or favicon set
+- `favicon.ico`
 - `og-image.webp`
-- `privacy-policy.html` or privacy section
-- `thank-you.html` if needed
-- `.gitignore`
 - `README.md`
+- `.gitignore`
+- `assets/images/optimized/*.avif`
+- `assets/icons/*.png`
+
+Current image weight:
+
+- Source PNG files, brochure page JPG exports, unused WebP duplicates, empty section folders, and `.DS_Store` files have been removed.
+- Current served image folder is `assets/images/optimized/`.
+- Current `assets/` folder is about 348 KB.
+
+Current missing launch files:
+
+- `thank-you.html` if needed
 
 Current missing SEO/analytics items:
 

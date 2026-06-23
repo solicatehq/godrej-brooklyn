@@ -338,7 +338,7 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url("assets/images/brooklyn_rooftop.png");
+  background-image: url("assets/images/optimized/brooklyn-rooftop-1024.avif");
   background-size: cover;
   background-position: center;
   padding: 120px clamp(16px, 4vw, 80px) 80px clamp(16px, 4vw, 80px);
@@ -865,7 +865,7 @@ img {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-image: url("assets/images/brooklyn_hero.png");
+  background-image: url("assets/images/optimized/brooklyn-hero-1024.avif");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -1646,7 +1646,7 @@ input[type="range"]::-moz-range-thumb:hover {
   padding: 40px;
   overflow: hidden;
   color: #fff;
-  background-image: url("assets/images/brooklyn_hero.png");
+  background-image: url("assets/images/optimized/brooklyn-hero-1024.avif");
   background-size: cover;
   background-position: center;
   cursor: pointer;
@@ -1973,7 +1973,7 @@ input[type="range"]::-moz-range-thumb:hover {
 }
 
 .contact-image {
-  background-image: url("assets/images/brooklyn_hero.png");
+  background-image: url("assets/images/optimized/brooklyn-hero-1024.avif");
   background-size: cover;
   background-position: 62% 52%;
 }
