@@ -49,6 +49,7 @@ const openButtons = document.querySelectorAll(".open-popup");
 const closeTargets = document.querySelectorAll("[data-close-modal]");
 const modalForm = document.getElementById("modal-form");
 const contactForm = document.getElementById("contact-form");
+const projectVideo = document.getElementById("project-film");
 const phoneLinks = document.querySelectorAll('a[href^="tel:"]');
 const whatsappLinks = document.querySelectorAll('a[href*="wa.me"]');
 
@@ -115,6 +116,20 @@ whatsappLinks.forEach((link) => {
     trackEvent("whatsapp_click", { target: link.getAttribute("href") });
   });
 });
+
+if (projectVideo) {
+  let projectVideoPlayTracked = false;
+
+  projectVideo.addEventListener("play", () => {
+    if (projectVideoPlayTracked) return;
+    projectVideoPlayTracked = true;
+    trackEvent("video_play", { source: "project_walkthrough_video" });
+  });
+
+  projectVideo.addEventListener("ended", () => {
+    trackEvent("video_complete", { source: "project_walkthrough_video" });
+  });
+}
 
 closeTargets.forEach((target) => {
   target.addEventListener("click", closeModal);
