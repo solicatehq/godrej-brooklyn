@@ -47,7 +47,7 @@
   <!-- Blog -->
   <url>
     <loc>https://godrejbrooklyn.info/blog/</loc>
-    <lastmod>2026-07-06</lastmod>
+    <lastmod>2026-07-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -78,6 +78,36 @@
   <url>
     <loc>https://godrejbrooklyn.info/blog/rera-guide-hyderabad-home-buyers.html</loc>
     <lastmod>2026-07-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://godrejbrooklyn.info/blog/godrej-brooklyn-avenue-nri-investment-guide.html</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://godrejbrooklyn.info/blog/premium-gated-communities-kphb-buyers-checklist.html</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://godrejbrooklyn.info/blog/luxury-apartments-near-hitec-city-kphb-families.html</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://godrejbrooklyn.info/blog/smart-homes-wellness-luxury-apartments-hyderabad.html</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://godrejbrooklyn.info/blog/buy-or-wait-hyderabad-luxury-apartment-guide.html</loc>
+    <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
